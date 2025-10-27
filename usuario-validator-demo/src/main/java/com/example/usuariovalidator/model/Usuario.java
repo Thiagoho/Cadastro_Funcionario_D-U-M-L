@@ -1,3 +1,11 @@
+/*
+ * Essa classe representa o usuário que será validado.
+ * Cada campo tem uma ou mais validações, incluindo as customizadas criadas pelo desenvolvedor:
+ * @Cpf → valida formato de CPF
+ * @IdadeMinima(18) → exige idade mínima de 18 anos
+ * @EmailCorporativo → exige e-mail com domínio “@empresa.com”
+ */
+
 package com.example.usuariovalidator.model;
 
 

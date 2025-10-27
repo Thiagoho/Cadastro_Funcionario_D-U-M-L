@@ -1,5 +1,12 @@
 package com.example.usuariovalidator.validation;
 
+
+/* 
+ * O método initialize() captura o valor da idade mínima configurada na annotation.
+ * O método isValid() compara a idade informada com o valor mínimo.
+ * */
+
+
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 

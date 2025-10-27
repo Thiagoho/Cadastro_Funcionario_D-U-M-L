@@ -1,3 +1,10 @@
+
+/*
+ * O @RestControllerAdvice permite capturar erros em todos os controllers.
+ * Quando uma validação falha, o método cria um mapa de erros com o nome 
+ * do campo e a mensagem configurada na annotation.
+ * Assim, o retorno é claro para o usuário, por exemplo:
+ */
 package com.example.usuariovalidator.exception;
 
 import org.springframework.http.HttpStatus;

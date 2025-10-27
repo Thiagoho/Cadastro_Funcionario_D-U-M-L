@@ -1,3 +1,9 @@
+/*
+ * O método cadastrar() recebe um objeto Usuario via JSON.
+ * A anotação @Valid ativa as validações automáticas do Bean Validation.
+ * Se alguma validação falhar, a exceção MethodArgumentNotValidException
+ * é lançada automaticamente — e capturada pelo GlobalExceptionHandler.
+ */
 package com.example.usuariovalidator.controlller;
 
 
@@ -14,7 +20,7 @@ public class UsuarioController {
 
     @PostMapping
     public ResponseEntity<String> cadastrar(@Valid @RequestBody Usuario usuario) {
-        return ResponseEntity.ok("✅ Usuário cadastrado com sucesso: " + usuario.getNome());
+        return ResponseEntity.ok(" Usuário cadastrado com sucesso: " + usuario.getNome());
     }
 }
 

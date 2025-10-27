@@ -1,3 +1,8 @@
+/*
+ * Essa classe inicia o projeto Spring Boot e ativa automaticamente
+ * as configurações de validação (Bean Validation) e injeção de dependências.
+ */
+
 package com.example.usuariovalidator;
 
 import org.springframework.boot.SpringApplication;
