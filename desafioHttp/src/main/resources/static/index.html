@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerenciar Produtos</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    .erro { color: red; margin-top: 10px; }
+    .ok { color: green; margin-top: 10px; }
+    input, button { padding: 6px; margin: 4px 0; }
+  </style>
+</head>
+<body>
+  <h1>Cadastrar Produto</h1>
+
+  <label>Nome:</label><br>
+  <input type="text" id="nome"><br>
+
+  <label>Preço:</label><br>
+  <input type="number" id="preco"><br>
+
+  <label>Estoque:</label><br>
+  <input type="number" id="estoque"><br>
+
+  <button onclick="cadastrarProduto()">Cadastrar</button>
+
+  <div id="mensagem"></div>
+
+  <hr>
+
+  <h2>Buscar Produto por ID</h2>
+  <input type="number" id="idBusca" placeholder="ID do produto">
+  <button onclick="buscarProduto()">Buscar</button>
+
+  <div id="resultadoBusca"></div>
+</body>
+<script>
+const apiUrl = 'http://localhost:8080/produtos'; // ajuste se sua porta for diferente
+
+function exibirMensagem(texto, tipo = 'erro') {
+  const div = document.getElementById('mensagem');
+  div.innerHTML = `<p class="${tipo}">${texto}</p>`;
+}
+
+function exibirResultado(texto, tipo = 'erro') {
+  const div = document.getElementById('resultadoBusca');
+  div.innerHTML = `<p class="${tipo}">${texto}</p>`;
+}
+
+// POST - Cadastrar produto
+function cadastrarProduto() {
+  const nome = document.getElementById('nome').value;
+  const preco = parseFloat(document.getElementById('preco').value);
+  const estoque = parseInt(document.getElementById('estoque').value);
+
+  fetch(apiUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ nome, preco, estoque })
+  })
+  .then(async res => {
+    const data = await res.json();
+    if (res.ok) {
+      exibirMensagem(`Produto criado! ID: ${data.id}`, 'ok');
+    } else {
+      exibirMensagem(`Erro ${res.status}: ${data.erro}`);
+    }
+  })
+  .catch(() => {
+    exibirMensagem('Erro na conexão com a API.');
+  });
+}
+
+// GET - Buscar produto por ID
+function buscarProduto() {
+  const id = document.getElementById('idBusca').value;
+
+  fetch(`${apiUrl}/${id}`)
+    .then(async res => {
+      if (res.ok) {
+        const produto = await res.json();
+        exibirResultado(`Produto: ${produto.nome}, Preço: R$${produto.preco}, Estoque: ${produto.estoque}`, 'ok');
+      } else {
+        const data = await res.json();
+        exibirResultado(`Erro ${res.status}: ${data.erro}`);
+      }
+    })
+    .catch(() => {
+      exibirResultado('Erro na conexão com a API.');
+    });
+}
+</script>
+
+</html>
