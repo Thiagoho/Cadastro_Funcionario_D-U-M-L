@@ -8,6 +8,7 @@ public class DesafioProdutoApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(DesafioProdutoApplication.class, args);
+		System.out.println("Hello");
 		
 	}
 
