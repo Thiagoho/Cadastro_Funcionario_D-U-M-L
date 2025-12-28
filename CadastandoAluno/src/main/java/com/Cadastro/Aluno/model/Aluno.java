@@ -11,7 +11,7 @@ package com.Cadastro.Aluno.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "alunos")
+@Table(name = "aluno")
 public class Aluno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
