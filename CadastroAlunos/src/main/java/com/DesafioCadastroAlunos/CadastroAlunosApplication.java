@@ -1,14 +1,14 @@
-package com.Cadastro.Aluno;
+package com.DesafioCadastroAlunos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CadastandoAlunoApplication {
+public class CadastroAlunosApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CadastandoAlunoApplication.class, args);
-		System.out.println("Hello world");
+		SpringApplication.run(CadastroAlunosApplication.class, args);
+		System.out.println("Hello World!");
 	}
 
 }

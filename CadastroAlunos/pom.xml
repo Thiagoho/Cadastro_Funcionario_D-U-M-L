@@ -5,14 +5,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-	<version>3.3.4</version>
+		<version>3.3.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.Cadastro.Aluno</groupId>
-	<artifactId>CadastandoAluno</artifactId>
+	<groupId>com.DesafioCadastroAlunos</groupId>
+	<artifactId>CadastroAlunos</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>CadastandoAluno</name>
-	<description>Desafio dessa project seria aprimorar boa pratica MVC</description>
+	<name>CadastroAlunos</name>
+	<description>Essa desafio igual o outro que fizemos, só que agora vamos além.</description>
 	<url/>
 	<licenses>
 		<license/>
@@ -30,7 +30,7 @@
 		<java.version>21</java.version>
 	</properties>
 	<dependencies>
-<!--  Core  -->
+<!--   Core   -->
 <dependency>
 <groupId>org.springframework.boot</groupId>
 <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -43,59 +43,57 @@
 <groupId>org.springframework.boot</groupId>
 <artifactId>spring-boot-starter-web</artifactId>
 </dependency>
-<!--  Banco de dados H2  -->
+<!--   Banco de dados H2   -->
 <dependency>
 <groupId>com.h2database</groupId>
 <artifactId>h2</artifactId>
 <scope>runtime</scope>
 </dependency>
-<!--  JDBC SQL Server (opcional se for usar MSSQL)  -->
+<!--   JDBC SQL Server (opcional se for usar MSSQL)   -->
 <dependency>
 <groupId>com.microsoft.sqlserver</groupId>
 <artifactId>mssql-jdbc</artifactId>
 <scope>runtime</scope>
 </dependency>
-<!--  SpringDoc Swagger UI  -->
+<!--   SpringDoc Swagger UI   -->
 <dependency>
 <groupId>org.springdoc</groupId>
 <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 <version>2.2.0</version>
 </dependency>
-<!--  Testes  -->
+<!--   Testes   -->
 <dependency>
 <groupId>org.springframework.boot</groupId>
 <artifactId>spring-boot-starter-test</artifactId>
 <scope>test</scope>
 </dependency>
 </dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<annotationProcessorPaths>
-						<path>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</path>
-					</annotationProcessorPaths>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<excludes>
-						<exclude>
-							<groupId>org.projectlombok</groupId>
-							<artifactId>lombok</artifactId>
-						</exclude>
-					</excludes>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
-
+<build>
+<plugins>
+<plugin>
+<groupId>org.apache.maven.plugins</groupId>
+<artifactId>maven-compiler-plugin</artifactId>
+<configuration>
+<annotationProcessorPaths>
+<path>
+<groupId>org.projectlombok</groupId>
+<artifactId>lombok</artifactId>
+</path>
+</annotationProcessorPaths>
+</configuration>
+</plugin>
+<plugin>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-maven-plugin</artifactId>
+<configuration>
+<excludes>
+<exclude>
+<groupId>org.projectlombok</groupId>
+<artifactId>lombok</artifactId>
+</exclude>
+</excludes>
+</configuration>
+</plugin>
+</plugins>
+</build>
 </project>
