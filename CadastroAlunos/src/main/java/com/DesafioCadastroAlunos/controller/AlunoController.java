@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.*;
 
 import com.DesafioCadastroAlunos.dto.AlunoDto;
-import com.DesafioCadastroAlunos.model.Aluno;
+
 import com.DesafioCadastroAlunos.service.AlunoService;
 
 
