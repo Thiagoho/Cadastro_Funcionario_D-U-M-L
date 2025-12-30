@@ -1,10 +1,10 @@
+// Entidade JPA
 package com.DesafioCadastroAlunos.model;
-
 
 import jakarta.persistence.*;
 @Entity
 @Table(name = "aluno")
-public class CDTAlunos {
+public class Aluno {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	
@@ -15,8 +15,14 @@ public class CDTAlunos {
 	private String email;
 	
 	// Construtor vázio (opcional)
-	public CDTAlunos() {}
-
+	public Aluno() {}
+	
+	public Aluno (String nome, String email) {
+		this.nome = nome;
+		this.email = email;
+	}
+	
+	// Getters & Setters
 	public Long getId() {
 		return id;
 	}
@@ -41,7 +47,4 @@ public class CDTAlunos {
 		this.email = email;
 	}
 	
-	
-	
-
 }
