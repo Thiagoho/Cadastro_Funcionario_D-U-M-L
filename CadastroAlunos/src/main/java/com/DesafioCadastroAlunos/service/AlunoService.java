@@ -2,6 +2,7 @@
 package com.DesafioCadastroAlunos.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -18,17 +19,38 @@ public class AlunoService {
 	public AlunoService(AlunoRepository alunoRepository) {
 		this.alunoRepository = alunoRepository;
 	}
-	public AlunoDto salvarAluno(AlunoDto alunoDto) {
-		Aluno aluno = alunoDto.toEntity();
-		Aluno salvo = alunoRepository.save(aluno);
-		return AlunoDto.fromEntity(salvo);
-	}
-	
-	public List<AlunoDto> listarAluno() {
+
+	public List<AlunoDto> listarTodos() {
 		return alunoRepository.findAll()
 				.stream()
 				.map(AlunoDto::fromEntity)
 				.collect(Collectors.toList());
+	}
+
+    public Optional<AlunoDto> buscarPorId(Long id) {
+        return alunoRepository.findById(id)
+                .map(AlunoDto::fromEntity);
+    }
+
+
+	public AlunoDto salvar(AlunoDto alunoDto) {
+		Aluno aluno = alunoDto.toEntity();
+		return AlunoDto.fromEntity(alunoRepository.save(aluno));
+	}
+	
+	public Optional<AlunoDto> atualizar(Long id, AlunoDto dto) {
+		return alunoRepository.findById(id).map(alunoExistente -> {
+			alunoExistente.setNome(dto.getNome());
+			alunoExistente.setEmail(dto.getEmail());
+			return AlunoDto.fromEntity(alunoRepository.save(alunoExistente));
+		});
+	}
+	public boolean excluir(Long id) {
+		if(alunoRepository.existsById(id)) {
+			alunoRepository.deleteById(id);;
+			return true;
+		}
+		return false;
 	}
 	
 }

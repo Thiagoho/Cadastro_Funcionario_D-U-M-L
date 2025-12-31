@@ -15,14 +15,17 @@ public class AlunoDto {
 		this.nome = nome;
 		this.email = email;
 	}
-
+	
+	// Converter Entidade --> DTO
 	public static AlunoDto fromEntity(Aluno aluno) {
 		return new AlunoDto(aluno.getNome(), aluno.getEmail());
 	}
-
+	// Converter DTO --> Entidade
 	public Aluno toEntity() {
 		return new Aluno(this.nome, this.email);
 	}
+	
+	
 	// Getters & Setters
 	public String getNome() {
 		return nome;
