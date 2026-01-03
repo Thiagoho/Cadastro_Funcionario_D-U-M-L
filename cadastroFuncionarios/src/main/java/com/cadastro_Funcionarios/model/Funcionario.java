@@ -1,7 +1,8 @@
 package com.cadastro_Funcionarios.model;
 
 import jakarta.persistence.*;
-
+@Entity
+@Table(name = "funcionario")
 public class Funcionario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
