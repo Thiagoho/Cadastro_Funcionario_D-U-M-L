@@ -1,20 +1,20 @@
 package com.cadastro_Funcionarios.dto;
 
-public class FuncionarioDto {
-	
+public class FuncionarioResponseDto {
+	// Atributos
 	private String nome;
 	private String email;
-	private String carga;
+	private String cargo;
 	
 	// Construtor Vázio(opcional)
-	public FuncionarioDto() {
+	public FuncionarioResponseDto() {
 		
 	}
 	// Construtor
-	public FuncionarioDto(String nome, String emial, String carga) {
+	public FuncionarioResponseDto(String nome, String email, String cargo) {
 		this.nome = nome;
 		this.email = email;
-		this.carga = carga;
+		this.cargo = cargo;
 	}
 	
 	// Getters & Getters
@@ -30,11 +30,11 @@ public class FuncionarioDto {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getCarga() {
-		return carga;
+	public String getCargo() {
+		return cargo;
 	}
-	public void setCarga(String carga) {
-		this.carga = carga;
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
 	}
 	
 }
