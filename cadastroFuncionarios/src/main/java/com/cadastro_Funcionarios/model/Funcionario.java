@@ -2,7 +2,11 @@ package com.cadastro_Funcionarios.model;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "funcionario")
+@Table(name = "funcionario", 
+				uniqueConstraints = {
+				@UniqueConstraint(columnNames = "email")		//Email único garantido no banco
+				}
+)
 public class Funcionario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.cadastro_Funcionarios.dto.FuncionarioResponseDto;
+import com.cadastro_Funcionarios.dto.*;
 import com.cadastro_Funcionarios.service.FuncionarioService;
 
 import jakarta.validation.Valid;
@@ -14,39 +14,30 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/api/funcionarios")
 public class FuncionarioController {
-	private final FuncionarioService funcionarioService;
 	
-	public FuncionarioController(FuncionarioService funcionarioService) {
-		this.funcionarioService = funcionarioService;
+	private final FuncionarioService service;
+	
+	public FuncionarioController(FuncionarioService service) {
+		this.service = service;
 	}
 	
-	// Get -- Buscar funcionário por ID
-	@GetMapping("/{id}")
-	public ResponseEntity<FuncionarioResponseDto> buscarPorId(@PathVariable Long id){
-		FuncionarioResponseDto funcionario = funcionarioService.buscarPorId(id);
-		return ResponseEntity.ok(funcionario);
+	// Post 
+	@PostMapping
+	public ResponseEntity<FuncionarioResponseDto> criar(
+			@Valid @RequestBody FuncionarioRequestDto dto) {
+		return ResponseEntity.ok(service.criar(dto));
 	}
-	
-	// Get -- Listar todos os funcionarios
+	//Get
+	@GetMapping
 	public ResponseEntity<List<FuncionarioResponseDto>> listarTodos() {
-		List<FuncionarioResponseDto> funcionario = funcionarioService.listarTodos();
-		return ResponseEntity.ok(funcionario);
+		return ResponseEntity.ok(service.listarTodos());
 	}
 	
-	// PUT -- Atualizar produto
-	@PutMapping("/{id}")
-	public ResponseEntity<FuncionarioResponseDto> atualizarProduto (
-			@PathVariable Long id,
-			@Valid @RequestBody FuncionarioResponseDto funcionarioDto) {
-		FuncionarioResponseDto funcionarioAtualizado = 
-			funcionarioService.atualizarFuncionario(id, funcionarioDto);
-		return ResponseEntity.ok(funcionarioAtualizado);
+	// Get {id}
+	@GetMapping("/{id}")
+	public ResponseEntity<FuncionarioResponseDto> buscarPorId(@PathVariable Long id) {
+		return ResponseEntity.ok(service.buscarPorId(id));
+			
 	}
-	// DELETE -- Deletar por id
-	@DeleteMapping("/{id}")
-	public ResponseEntity<Void> deletarfuncioanrio(@PathVariable Long id) {
-		funcionarioService.deletarFuncionario(id);
 	
-	return ResponseEntity.noContent().build();
-	}
 }
