@@ -40,4 +40,47 @@ public class FuncionarioController {
 			
 	}
 	
+	// Put
+	@PutMapping("/{id}")
+	public ResponseEntity<FuncionarioResponseDto> atualizar(
+			@PathVariable Long id,
+			@Valid @RequestBody FuncionarioRequestDto dto) {
+		return ResponseEntity.ok(service.atualizar(id, dto));
+	}
+	
+	//Deletar
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deletar(@PathVariable Long id) {
+		service.deletar(id);
+		return ResponseEntity.noContent().build();
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
